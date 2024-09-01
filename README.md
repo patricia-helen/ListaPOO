@@ -1,2 +1,2 @@
-# ListaPOO
-Atividades em sala de aula da disciplina de POO em Sistemas de Informação- UFVJM
+# SISTEMA DE ACADEMIA
+Modelagem de um sistema de Academia...

@@ -1,0 +1,34 @@
+\begin{tikzpicture}
+    \begin{umlsystem}[x=0, y=0]{Sistema Academia}
+        \umlusecase[x=1, y=10, name=VerificarVaga]{Verificar vaga na agenda}
+        \umlusecase[x=9, y=11, name=Agendar]{Realizar agendamento}
+        \umlusecase[x=9, y=7, name=Confirmar]{Confirmar agendamento}
+        \umlusecase[x=3, y=8, name=Cancelar]{Cancelar agendamento}
+        \umlusecase[x=0, y=7, name=LancarDespesa]{Lançar despesa diária}
+        \umlusecase[x=1, y=2, name=GerarBalanco]{Gerar balanço mensal}
+        \umlusecase[x=2, y=4, name=GerenciarDespesas]{Gerenciar despesas da academia}
+        \umlusecase[x=1, y=12, name=Autenticar]{Autenticar Usuário}
+    \end{umlsystem}
+
+    \umlactor[x=-4, y=8]{Funcionario}
+    \umlactor[x=-4, y=4]{Proprietario}
+    
+    % Generalização entre Proprietário e Funcionário com seta vazia
+   \umlinherit{Proprietario}{Funcionario}
+    
+    % Associações do Funcionário
+    \umlassoc{Funcionario}{Autenticar}
+    \umlassoc{Funcionario}{VerificarVaga}
+    \umlassoc{Funcionario}{Agendar}
+    \umlassoc{Funcionario}{LancarDespesa}
+    
+    % Associações do Proprietário
+    \umlassoc{Proprietario}{GerarBalanco}
+    \umlassoc{Proprietario}{GerenciarDespesas}
+    
+    % Relacionamentos de dependência (include/extend)
+    \umlinclude{Agendar}{VerificarVaga} % Inclusão de "Verificar Vaga" no "Agendar"
+    \umlinclude{Agendar}{Confirmar}
+    \umlinclude{Agendar}{Cancelar}
+
+\end{tikzpicture}

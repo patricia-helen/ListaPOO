@@ -1,0 +1,146 @@
+\section*{Verificar vaga na agenda}
+
+O Funcionário/Proprietário deve seguir os seguintes passos:
+\begin{itemize}
+    \item Autenticar-se no sistema utilizando seu login e senha.
+    \item Escolher a opção "Verificar vaga na agenda".
+    \item Inserir a data específica para a qual deseja verificar as vagas disponíveis.
+    \item Selecionar a aula desejada para verificar os horários e o número de vagas disponíveis.
+    \item Visualizar os detalhes das vagas disponíveis, incluindo os horários e os clientes já agendados.
+    \item Caso deseje, pode proceder com o "Realizar agendamento" para marcar uma vaga.
+    \item Se não desejar realizar outra ação, encerrar a consulta no sistema.
+\end{itemize}
+
+\newpage % Quebra de página antes do próximo cenário
+
+\section*{Realizar um agendamento preliminar}
+
+O Funcionário deve seguir os seguintes passos:
+\begin{itemize}
+    \item Autenticar-se no sistema utilizando seu login e senha (caso de uso: \textit{Autenticar Usuário}).
+    \item Escolher a opção "Realizar agendamento preliminar" (caso de uso: \textit{Realizar agendamento}).
+    \item Inserir as informações do cliente, incluindo nome, endereço, número de telefone, e-mail e CPF pseudo-anonimizado.
+    \item Selecionar a data e a aula desejada (spinning, musculação, fit dance ou pilates).
+    \item O sistema verifica automaticamente a disponibilidade de vagas na agenda para a data e aula selecionadas (caso de uso: \textit{Verificar vaga na agenda}).
+    \item Caso haja vagas disponíveis, o funcionário insere as informações adicionais, como o número do cartão de crédito do cliente, o tipo de aula, e o instrutor responsável.
+    \item O sistema registra o agendamento preliminar e exibe um resumo da reserva feita, incluindo o preço a ser cobrado.
+    \item O funcionário confirma o agendamento preliminar ou decide encerrar a operação.
+    \item O sistema salva o agendamento preliminar e aguarda a confirmação do cliente até 5 dias úteis antes da data marcada.
+\end{itemize}
+
+\section*{Cancelar um agendamento}
+
+O sistema deve seguir os seguintes passos:
+\begin{itemize}
+    \item Verificar automaticamente se o agendamento preliminar não foi confirmado pelo cliente até 5 dias úteis antes da data marcada.
+    \item Se o agendamento não for confirmado, o sistema automaticamente altera o status do agendamento para "Cancelado".
+    \item O sistema atualiza a disponibilidade da vaga na agenda, liberando o horário para outros clientes.
+    \item O sistema notifica o cliente sobre o cancelamento automático do agendamento via e-mail ou SMS, conforme as informações de contato fornecidas.
+    \item Se o cancelamento ocorrer após a confirmação do agendamento, o sistema processa automaticamente o reembolso de 50\% do valor cobrado, conforme as regras estabelecidas.
+    \item O sistema registra o cancelamento e finaliza a operação.
+\end{itemize}
+
+\section*{Lançar despesa diária de um Cliente/Academia}
+
+O Funcionário/Proprietário deve seguir os seguintes passos:
+\begin{itemize}
+    \item Autenticar-se no sistema utilizando seu login e senha.
+    \item Escolher a opção "Lançar despesa diária".
+    \item Selecionar o tipo de despesa a ser lançada:
+    \begin{itemize}
+        \item Despesa do cliente: relacionada ao consumo em lanchonete, compra de material na loja, etc.
+        \item Despesa da academia: relacionada à operação geral da academia, como limpeza, materiais de uso diário, pagamento de instrutores, etc.
+    \end{itemize}
+    \item Se for uma **despesa do cliente**:
+    \begin{itemize}
+        \item Selecionar o espaço onde a despesa foi realizada (ex: lanchonete, loja de material de academia).
+        \item O sistema exibe o estoque de produtos disponíveis no espaço selecionado, incluindo quantidades e preços.
+        \item O funcionário seleciona os produtos/serviços que o cliente consumiu ou adquiriu, adicionando-os à comanda do cliente.
+        \item O sistema atualiza automaticamente o estoque, adiciona a data e hora da transação, e calcula o valor total da comanda.
+        \item O funcionário oferece as opções de pagamento ao cliente: cartão, dinheiro ou PIX.
+        \item O funcionário seleciona a forma de pagamento utilizada pelo cliente e confirma o pagamento.
+        \item O sistema registra a despesa no histórico financeiro do cliente e atualiza o saldo devedor.
+        \item O sistema gera um comprovante digital da comanda, que pode ser enviado ao cliente e adicionado ao histórico de transações.
+    \end{itemize}
+    \item Se for uma **despesa da academia**:
+    \begin{itemize}
+        \item Selecionar a categoria de despesa:
+        \begin{itemize}
+            \item Limpeza;
+            \item Material de uso diário;
+            \item Pagamento de instrutores (acesso exclusivo do Proprietário).
+        \end{itemize}
+        \item Para as despesas de **limpeza** ou **material de uso diário**:
+        \begin{itemize}
+            \item O sistema exibe o estoque de materiais disponíveis para a categoria selecionada.
+            \item O funcionário seleciona os materiais utilizados, incluindo a quantidade.
+            \item Se o item necessário não estiver no estoque, o sistema oferece a opção "Criar nova despesa".
+            \item Caso a opção "Criar nova despesa" seja selecionada:
+            \begin{itemize}
+                \item O funcionário insere a descrição, o nome, e o valor da nova despesa.
+                \item O sistema adiciona automaticamente a nova despesa ao estoque ou à lista de serviços disponíveis, para uso futuro.
+                \item A nova despesa é então selecionada e adicionada à transação atual.
+            \end{itemize}
+            \item O sistema atualiza automaticamente o estoque, adiciona a data e hora da transação, e calcula o valor total da despesa.
+            \item O sistema registra a despesa no histórico financeiro da academia e atualiza o saldo de despesas do mês.
+            \item O sistema gera um relatório interno da despesa, que pode ser acessado posteriormente para fins de balanço mensal.
+        \end{itemize}
+        \item Para o **pagamento de instrutores**:
+        \begin{itemize}
+            \item O proprietário acessa a opção "Pagamento de instrutores".
+            \item O proprietário insere as informações de pagamento, como o valor (a data e hora são preenchidas automaticamente pelo sistema).
+            \item O sistema registra o pagamento no histórico financeiro da academia e atualiza o saldo de despesas do mês.
+            \item O sistema gera um relatório interno da despesa, que pode ser acessado pelo proprietário para fins de balanço mensal.
+        \end{itemize}
+    \end{itemize}
+    \item **Editar Despesa (acesso exclusivo do Proprietário):**
+    \begin{itemize}
+        \item O proprietário seleciona a opção "Editar Despesa".
+        \item O proprietário navega até a despesa que deseja editar, seja uma despesa do cliente ou da academia.
+        \item O sistema permite a edição dos detalhes da despesa, como descrição, valor, e quantidade.
+        \item O sistema atualiza os registros da despesa editada e ajusta o estoque e/ou o histórico financeiro conforme necessário.
+        \item O sistema gera um novo relatório, refletindo as mudanças feitas, e arquiva as alterações para auditoria futura.
+    \end{itemize}
+    \item O funcionário ou proprietário encerra a operação ou inicia o processo para registrar ou editar uma nova despesa.
+\end{itemize}
+
+\section*{Gerar balanço mensal}
+
+O Proprietário deve seguir os seguintes passos:
+\begin{itemize}
+    \item Autenticar-se no sistema utilizando seu login e senha (caso de uso: \textit{Autenticar Usuário}).
+    \item Escolher a opção "Gerar balanço mensal" no menu principal.
+    \item O sistema verifica automaticamente se o mês atual já foi concluído:
+    \begin{itemize}
+        \item Se o mês ainda não terminou (menos de 29 dias no mês), o sistema exibe uma mensagem informando que o balanço mensal só poderá ser gerado após o término do mês.
+        \item Se o mês terminou (mínimo de 29 dias, máximo de 31 dias), o sistema permite a geração do balanço mensal.
+    \end{itemize}
+    \item O sistema solicita a seleção do mês e ano para o qual o balanço deve ser gerado:
+    \begin{itemize}
+        \item Se o mês ainda não terminou, a opção de geração do balanço não está disponível.
+        \item Se o mês terminou, o proprietário seleciona o mês e o ano desejado.
+    \end{itemize}
+    \item O sistema compila todas as receitas e despesas do período selecionado, incluindo:
+    \begin{itemize}
+        \item Receitas provenientes de diárias, mensalidades e vendas de produtos.
+        \item Despesas relacionadas a salários de instrutores, limpeza, materiais de uso diário, e quaisquer outras despesas lançadas no sistema durante o mês.
+    \end{itemize}
+    \item O sistema calcula o saldo final do mês, considerando todas as receitas e despesas.
+    \item O sistema gera um relatório detalhado do balanço mensal, que inclui:
+    \begin{itemize}
+        \item Resumo das receitas e despesas;
+        \item Gráficos e tabelas que mostram a distribuição das despesas por categoria;
+        \item Saldo final do mês;
+        \item Comparação com meses anteriores (se aplicável).
+    \end{itemize}
+    \item O relatório é salvo automaticamente no histórico financeiro da academia.
+    \item O proprietário pode optar por:
+    \begin{itemize}
+        \item Consultar relatórios de balanços mensais anteriores, selecionando o mês e ano desejado.
+        \item Salvar o relatório gerado em formato digital para consulta futura;
+        \item Imprimir o relatório;
+        \item Enviar o relatório por e-mail para stakeholders ou para o próprio arquivo.
+    \end{itemize}
+    \item O proprietário encerra a operação ou opta por consultar outro relatório.
+\end{itemize}
+

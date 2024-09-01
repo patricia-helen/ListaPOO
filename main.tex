@@ -1,0 +1,75 @@
+\documentclass{article}
+
+\usepackage[portuguese]{babel}
+%\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2.5cm,right=2.5cm]{geometry}
+
+\usepackage{amssymb}
+\usepackage{siunitx}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{adjustbox}
+\usepackage{array}
+\usepackage{url}
+\usepackage{titlesec}
+\usepackage{authblk}
+\usepackage{xcolor}
+\renewcommand{\thetable}{\Roman{table}}
+\usepackage{graphicx} % Para usar \scalebox
+\usepackage{pgf-umlsd}
+\usepackage{tikz-uml}
+
+% Definir formato para \subsection
+\titleformat{\subsection}{\mdseries\itshape\large}{\thesubsection}{1em}{} 
+
+\title{Modelagem de Sistema para Gestão de Academia em Milho Verde}
+\author[1]{Patricia Helen Ribeiro Moreira}
+\affil[1]{Universidade Federal dos Vales do Jequitinhonha e Mucuri (UFVJM), Campus Diamantina, MG, Brasil\\\texttt{patricia.helen@ufvjm.edu.br}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\textbf{Objetivo} - Este trabalho visa desenvolver um modelo de sistema para gerenciar uma academia localizada em Milho Verde, abordando desde o controle de agendamentos até a gestão financeira completa da academia.
+
+\textbf{Metodologia/Abordagem} - O sistema foi modelado utilizando conceitos de Programação Orientada a Objetos (POO) e Engenharia de Software. A modelagem inclui diagramas de casos de uso, sequência, classe e estados.
+
+\textbf{Palavras-chave:} Gerenciamento de Academia; Sistema de Agendamento; Programação Orientada a Objetos; Engenharia de Software; Gestão Financeira.
+\end{abstract}
+
+\section{Introdução}
+A crescente demanda por serviços de academias, especialmente em áreas turísticas como Milho Verde, exige um sistema robusto e eficiente para gerenciar tanto as operações diárias quanto as necessidades administrativas. Este trabalho tem como objetivo principal o desenvolvimento de um modelo de sistema para gerenciar uma academia em Milho Verde. O sistema visa otimizar o processo de agendamento de aulas, o lançamento de despesas diárias e a geração de balanços mensais.
+
+Utilizando conceitos de Programação Orientada a Objetos (POO) e práticas recomendadas de Engenharia de Software, o sistema foi modelado para atender às especificidades de uma academia que recebe tanto clientes locais quanto turistas. A modelagem inclui a elaboração de diagramas de casos de uso, sequência, classe e estados, fornecendo uma visão completa do funcionamento do sistema proposto. A implementação futura deste sistema pode facilitar o gerenciamento de academias em contextos semelhantes, proporcionando uma ferramenta eficaz para a administração e operação.
+
+\section{Diagrama de Caso de Uso}
+\input{Chapter/00CasodeUso.tex}
+
+\section{Fluxo de Eventos}
+\input{Chapter/01FluxoEventos.tex}
+
+\section{Diagrama de Sequência}
+\input{Chapter/02DSequencia.tex}
+
+\section{Diagrama de Classes}
+\input{Chapter/03DClasse.tex}
+
+\section{Diagrama de Estado}
+\input{Chapter/04DEstado.tex}
+
+\newpage % Quebra de página antes da conclusão
+\section{Conclusão}
+Neste trabalho, foi desenvolvido um modelo de sistema para gestão de academias em Milho Verde, utilizando conceitos de Programação Orientada a Objetos (POO) e práticas de Engenharia de Software. A modelagem incluiu diagramas de casos de uso, sequência, classes e estados, proporcionando uma visão abrangente e detalhada do funcionamento do sistema proposto.
+
+O sistema modelado busca atender às necessidades operacionais e administrativas de uma academia localizada em uma região turística, oferecendo funcionalidades que vão desde o controle de agendamentos até a gestão financeira completa. A abordagem adotada permite uma maior eficiência no gerenciamento das atividades diárias, garantindo um melhor atendimento aos clientes, tanto locais quanto turistas.
+
+A aplicação dos conceitos de POO na modelagem do sistema demonstrou ser uma escolha eficaz, permitindo uma estrutura modular e extensível, que pode ser facilmente adaptada a outras academias com características similares. A utilização de diagramas detalhados auxiliou na compreensão dos processos e na identificação de possíveis melhorias e adaptações futuras.
+
+Este estudo, além de oferecer uma solução prática para o gerenciamento de academias, contribui para a literatura de Engenharia de Software ao demonstrar como os conceitos de POO podem ser aplicados de forma eficiente no desenvolvimento de sistemas de gestão. Futuras implementações deste modelo podem contribuir para uma maior eficiência operacional e uma melhor experiência para os usuários das academias, beneficiando tanto os administradores quanto os clientes.
+
+\hfill
+\end{document}

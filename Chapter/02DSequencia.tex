@@ -1,0 +1,113 @@
+\section*{Verificar Vaga na Agenda}
+\begin{sequencediagram}
+  \newthread{func}{Funcionário}
+  \newinst[3]{sys}{Sistema}
+  \newinst[3]{agenda}{Agenda}
+
+  \begin{call}{func}{Autenticar()}{sys}{}
+  \end{call}
+
+  \begin{call}{func}{VerificarVaga(data, aula)}{sys}{}
+    \begin{call}{sys}{ConsultarVagas(data, aula)}{agenda}{vagasDisponíveis}
+    \end{call}
+  \end{call}
+
+  \begin{call}{sys}{ExibirVagas(vagasDisponíveis)}{func}{}
+  \end{call}
+\end{sequencediagram}
+
+\vspace{1cm}
+
+\section*{Realizar Agendamento Preliminar}
+\begin{sequencediagram}
+  \newthread{func}{Funcionário}
+  \newinst[3]{sys}{Sistema}
+  \newinst[3]{agenda}{Agenda}
+  \newinst[3]{cli}{Cliente}
+
+  \begin{call}{func}{Autenticar()}{sys}{}
+  \end{call}
+
+  \begin{call}{func}{AgendarPreliminar(cliInfo, aula, data)}{sys}{}
+    \begin{call}{sys}{VerificarVaga(data, aula)}{agenda}{vagaDisponível}
+    \end{call}
+    \begin{call}{sys}{RegistrarAgendamento(cliInfo, aula, data)}{agenda}{resumoAgendamento}
+    \end{call}
+  \end{call}
+
+  \begin{call}{sys}{ExibirResumo(resumoAgendamento)}{func}{}
+  \end{call}
+
+  \begin{call}{func}{ConfirmarAgendamento()}{sys}{}
+  \end{call}
+\end{sequencediagram}
+
+\vspace{1cm}
+
+\section*{Cancelar um Agendamento}
+\begin{sequencediagram}
+  \newthread{func}{Funcionário}
+  \newinst[3]{sys}{Sistema}
+  \newinst[3]{agenda}{Agenda}
+
+  \begin{call}{func}{Autenticar()}{sys}{}
+  \end{call}
+
+  \begin{call}{func}{CancelarAgendamento(agendamentoId)}{sys}{}
+    \begin{call}{sys}{RemoverAgendamento(agendamentoId)}{agenda}{}
+    \end{call}
+  \end{call}
+\end{sequencediagram}
+
+\vspace{1cm}
+
+\section*{Lançar Despesa Diária de um Cliente/Academia}
+\begin{sequencediagram}
+  \newthread{func}{Funcionário}
+  \newinst[3]{sys}{Sistema}
+  \newinst[3]{estoque}{Estoque}
+
+  \begin{call}{func}{Autenticar()}{sys}{}
+  \end{call}
+
+  \begin{call}{func}{SelecionarEspaço(espaço)}{sys}{}
+  \end{call}
+
+  \begin{call}{sys}{ListarProdutosServiços(estoque)}{estoque}{itensDisponíveis}
+  \end{call}
+
+  \begin{call}{func}{SelecionarItens(itens)}{sys}{}
+  \end{call}
+
+  \begin{call}{sys}{RegistrarDespesa(cliente, itens)}{estoque}{}
+  \end{call}
+
+  \begin{call}{sys}{ExibirResumoDespesa(resumo)}{func}{}
+  \end{call}
+
+  \begin{call}{func}{ProcessarPagamento(métodoPagamento)}{sys}{}
+  \end{call}
+\end{sequencediagram}
+
+\vspace{1cm}
+
+\section*{Gerar Balanço Mensal}
+\begin{sequencediagram}
+  \newthread{prop}{Proprietário}
+  \newinst[3]{sys}{Sistema}
+  \newinst[3]{relatorio}{RelatórioMensal}
+
+  \begin{call}{prop}{Autenticar()}{sys}{}
+  \end{call}
+
+  \begin{call}{prop}{GerarBalançoMensal(mês)}{sys}{}
+    \begin{call}{sys}{CompilarDespesasReceitas(mês)}{relatorio}{resumoMensal}
+    \end{call}
+  \end{call}
+
+  \begin{call}{sys}{SalvarRelatório(resumoMensal)}{relatorio}{}
+  \end{call}
+
+  \begin{call}{sys}{ExibirResumoMensal(resumoMensal)}{prop}{}
+  \end{call}
+\end{sequencediagram}

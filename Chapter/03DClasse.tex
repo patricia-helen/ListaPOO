@@ -1,0 +1,112 @@
+\clearpage
+\begin{center} % Centralizar o diagrama
+\scalebox{0.7}{ % Reduzir a escala para 70%
+
+\begin{tikzpicture}
+    \umlclass[x=-6, y=0]{Pessoa}{
+        - id: int \\
+        - nome: string \\
+        - login: string \\
+        - senha: string
+    }{
+        + autenticar(): boolean
+    }
+
+    \umlclass[x=4, y=0]{Funcionario}{
+        - cargo: string
+    }{
+        + verificarVaga() \\
+        + realizarAgendamentoPreliminar() \\
+        + cancelarAgendamento() \\
+        + lancarDespesa()
+    }
+    
+    \umlclass[x=-6, y=-7]{Proprietario}{
+    }{
+        + gerarBalancoMensal() \\
+        + editarDespesa()
+    }
+    
+    \umlclass[x=-4, y=-4]{Cliente}{
+        - id: int \\
+        - nome: string \\
+        - email: string \\
+        - telefone: string
+    }{
+    }
+
+    \umlclass[x=1, y=-4]{Agendamento}{
+        - id: int \\
+        - data: date \\
+        - hora: time \\
+        - status: string \\
+        - tipo: string \\
+        - clienteId: int
+    }{
+        + confirmarAgendamento() \\
+        + cancelarAgendamento()
+    }
+    
+    \umlclass[x=6, y=-4]{Despesa}{
+        - id: int \\
+        - descricao: string \\
+        - valor: float \\
+        - data: date \\
+        - tipo: string \\
+        - clienteId: int \\
+        - espacoId: int
+    }{
+        + criarNovaDespesa()
+    }
+    
+    \umlclass[x=4, y=-10]{Espaco}{
+        - id: int \\
+        - nome: string
+    }{
+        + listarProdutosServicos()
+    }
+    
+    \umlclass[x=-4, y=-10]{Produto}{
+        - id: int \\
+        - nome: string \\
+        - valor: float \\
+        - quantidade: int \\
+        - espacoId: int
+    }{
+    }
+    
+    \umlclass[x=0, y=-15]{Estoque}{
+        - espacoId: int \\
+        - produtoId: int \\
+        - quantidadeDisponivel: int
+    }{
+    }
+    
+    \umlclass[x=-6, y=-15]{RelatorioMensal}{
+        - mes: int \\
+        - ano: int \\
+        - despesasTotais: float \\
+        - receitasTotais: float \\
+        - balanco: float
+    }{
+        + compilarDespesasReceitas() \\
+        + salvarRelatorio() \\
+        + exibirResumoMensal()
+    }
+    
+    % Herança
+    \umlinherit{Funcionario}{Pessoa}
+    \umlinherit{Proprietario}{Pessoa}
+    
+    % Associação
+    \umlassoc{Funcionario}{Agendamento}
+    \umlassoc{Funcionario}{Despesa}
+    \umlassoc{Proprietario}{RelatorioMensal}
+    \umlassoc{Espaco}{Produto}
+    \umlassoc{Produto}{Estoque}
+    \umlassoc{Cliente}{Agendamento}
+    \umlassoc{Despesa}{Espaco}
+\end{tikzpicture}
+} % Fim da escala
+\end{center} % Fim do centro
+\clearpage
